@@ -1,21 +1,21 @@
-%define ewmh_major 1
+%define ewmh_major 2
 %define icccm_major 4
 
 %define libewmh %mklibname xcb-ewmh %{ewmh_major}
 %define libicccm %mklibname xcb-icccm %{icccm_major}
 %define develname %mklibname %{name} -d
+%define develnamest %mklibname %{name} -d -s
 
 Summary:	xcb-util-wm
 Name:		xcb-util-wm
-Version:	0.3.8
-Release:	%mkrel 1
+Version:	0.3.9
+Release:	1
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/%name-%{version}.tar.bz2
 License:	MIT
 Group:		System/X11
-BuildRequires:	xcb-util-devel >= 0.3.8
+BuildRequires:	xcb-util-devel >= 0.3.9
 BuildRequires:	x11-util-macros
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The xcb-util module provides a number of libraries which sit on top of
@@ -56,11 +56,27 @@ Provides:	libxcb-util-wm-devel = %{version}-%{release}
 Provides:	xcb-util-wm-devel = %{version}-%{release}
 Requires:	%{libewmh} = %{version}-%{release}
 Requires:	%{libicccm} = %{version}-%{release}
-Conflicts:	%{mklibname xcb-util -d} < 0.3.8
-Conflicts:	%{mklibname xcb-util -d -s} < 0.3.8
+Conflicts:	%{mklibname xcb-util -d} < 0.3.9
+Conflicts:	%{mklibname xcb-util -d -s} < 0.3.9
 
 %description -n %{develname}
-This pakcage includes the development files required to build software against
+This package includes the development files required to build software against
+%{name}.
+
+%package -n %{develnamest}
+Summary:	xcb-util-wm development static files
+Group:		Development/C
+Provides:	libxcb-util-wm-devel-static = %{version}-%{release}
+Provides:	xcb-util-wm-devel-static = %{version}-%{release}
+Requires:	%{libewmh} = %{version}-%{release}
+Requires:	%{libicccm} = %{version}-%{release}
+Requires:	xcb-util-wm-devel = %{version}-%{release}
+Conflicts:	%{mklibname xcb-util -d} < 0.3.9
+Conflicts:	%{mklibname xcb-util -d -s} < 0.3.9
+
+%description -n %{develnamest}
+This package includes the static development
+files required to build software against
 %{name}.
 
 %prep
@@ -71,30 +87,23 @@ This pakcage includes the development files required to build software against
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files -n %{libewmh}
-%defattr(-,root,root)
 %{_libdir}/libxcb-ewmh.so.%{ewmh_major}*
 
 %files -n %{libicccm}
-%defattr(-,root,root)
 %{_libdir}/libxcb-icccm.so.%{icccm_major}*
 
+%files -n %{develnamest}
+%{_libdir}/libxcb-ewmh.a
+%{_libdir}/libxcb-icccm.a
+
 %files -n %{develname}
-%defattr(-,root,root)
 %doc ChangeLog NEWS README
 %{_includedir}/xcb/xcb_ewmh.h
 %{_includedir}/xcb/xcb_icccm.h
-%{_libdir}/libxcb-ewmh.a
-%{_libdir}/libxcb-ewmh.la
 %{_libdir}/libxcb-ewmh.so
-%{_libdir}/libxcb-icccm.a
-%{_libdir}/libxcb-icccm.la
 %{_libdir}/libxcb-icccm.so
 %{_libdir}/pkgconfig/xcb-ewmh.pc
 %{_libdir}/pkgconfig/xcb-icccm.pc
