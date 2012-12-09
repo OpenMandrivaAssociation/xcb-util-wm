@@ -107,3 +107,14 @@ files required to build software against
 %{_libdir}/libxcb-icccm.so
 %{_libdir}/pkgconfig/xcb-ewmh.pc
 %{_libdir}/pkgconfig/xcb-icccm.pc
+
+
+%changelog
+* Mon Jun 04 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.3.9-1
++ Revision: 802328
+- version update 0.3.9
+
+* Wed Oct 26 2011 Tomasz Pawel Gajc <tpg@mandriva.org> 0.3.8-1
++ Revision: 707434
+- import xcb-util-wm
+
