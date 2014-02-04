@@ -61,6 +61,7 @@ Conflicts:	%{mklibname xcb-util -d -s} < 0.3.9
 This package includes the development files required to build software against
 %{name}.
 
+%prep
 %setup -q
 
 %build
