@@ -4,8 +4,6 @@
 %define libewmh %mklibname xcb-ewmh %{ewmh_major}
 %define libicccm %mklibname xcb-icccm %{icccm_major}
 %define develname %mklibname %{name} -d
-%define develnamest %mklibname %{name} -d -s
-
 Summary:	xcb-util-wm
 Name:		xcb-util-wm
 Version:	0.4.0
@@ -63,23 +61,6 @@ Conflicts:	%{mklibname xcb-util -d -s} < 0.3.9
 This package includes the development files required to build software against
 %{name}.
 
-%package -n %{develnamest}
-Summary:	xcb-util-wm development static files
-Group:		Development/C
-Provides:	libxcb-util-wm-devel-static = %{version}-%{release}
-Provides:	xcb-util-wm-devel-static = %{version}-%{release}
-Requires:	%{libewmh} = %{version}-%{release}
-Requires:	%{libicccm} = %{version}-%{release}
-Requires:	xcb-util-wm-devel = %{version}-%{release}
-Conflicts:	%{mklibname xcb-util -d} < 0.3.9
-Conflicts:	%{mklibname xcb-util -d -s} < 0.3.9
-
-%description -n %{develnamest}
-This package includes the static development
-files required to build software against
-%{name}.
-
-%prep
 %setup -q
 
 %build
@@ -94,10 +75,6 @@ files required to build software against
 
 %files -n %{libicccm}
 %{_libdir}/libxcb-icccm.so.%{icccm_major}*
-
-%files -n %{develnamest}
-%{_libdir}/libxcb-ewmh.a
-%{_libdir}/libxcb-icccm.a
 
 %files -n %{develname}
 %doc ChangeLog NEWS README
