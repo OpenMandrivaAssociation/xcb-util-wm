@@ -65,7 +65,9 @@ This package includes the development files required to build software against
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+		--disable-static
+
 %make
 
 %install
