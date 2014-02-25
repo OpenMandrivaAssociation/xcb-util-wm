@@ -6,8 +6,8 @@
 %define develname %mklibname %{name} -d
 Summary:	xcb-util-wm
 Name:		xcb-util-wm
-Version:	0.4.0
-Release:	2
+Version:	0.4.1
+Release:	1
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/%name-%{version}.tar.bz2
 License:	MIT
