@@ -7,7 +7,7 @@
 Summary:	xcb-util-wm
 Name:		xcb-util-wm
 Version:	0.4.1
-Release:	5
+Release:	6
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/%name-%{version}.tar.bz2
 License:	MIT
@@ -65,7 +65,7 @@ This package includes the development files required to build software against
 %setup -q
 
 %build
-%configure2_5x
+%configure --with-pic
 %make
 
 %install
