@@ -4,10 +4,13 @@
 %define libewmh %mklibname xcb-ewmh %{ewmh_major}
 %define libicccm %mklibname xcb-icccm %{icccm_major}
 %define develname %mklibname %{name} -d
+
+%global optflags %{optflags} -O3
+
 Summary:	xcb-util-wm
 Name:		xcb-util-wm
 Version:	0.4.1
-Release:	8
+Release:	9
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/%name-%{version}.tar.bz2
 License:	MIT
@@ -62,14 +65,14 @@ This package includes the development files required to build software against
 %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --with-pic
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libewmh}
 %{_libdir}/libxcb-ewmh.so.%{ewmh_major}*
@@ -85,4 +88,3 @@ This package includes the development files required to build software against
 %{_libdir}/libxcb-icccm.so
 %{_libdir}/pkgconfig/xcb-ewmh.pc
 %{_libdir}/pkgconfig/xcb-icccm.pc
-
