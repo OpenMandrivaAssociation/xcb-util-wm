@@ -19,7 +19,7 @@ Summary:	xcb-util-wm
 Name:		xcb-util-wm
 Version:	0.4.2
 Release:	2
-Url:		http://xcb.freedesktop.org
+Url:		https://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/%name-%{version}.tar.xz
 License:	MIT
 Group:		System/X11
